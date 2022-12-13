@@ -59,7 +59,7 @@ CREATE TABLE `bookmarks` (
 	`marked_at`	DATETIME	NOT NULL	COMMENT '북마크 된 일시.'
 );
 
-CREATE TABLE `account_status` (
+CREATE TABLE `accounts_status` (
 	`origin_id`	BIGINT(11)	NOT NULL	COMMENT '계정 고유번호.',
 	`open`	BOOLEAN	NULL	DEFAULT TRUE	COMMENT '계정 비공개 여부.',
 	`banned`	BOOLEAN	NULL	DEFAULT FALSE	COMMENT '계정이 정지됐는지 여부.',
