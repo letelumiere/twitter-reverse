@@ -1,4 +1,4 @@
-package com.letelumiere.twitterreverse.domain.api.model;
+package com.letelumiere.twitterreverse.domain.api.model.entity;
 
 
 public class profiles {

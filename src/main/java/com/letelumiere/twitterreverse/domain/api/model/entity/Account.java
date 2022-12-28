@@ -1,11 +1,16 @@
-package com.letelumiere.twitterreverse.domain.api.model;
+package com.letelumiere.twitterreverse.domain.api.model.entity;
 
 import java.util.Date;
 import javax.persistence.*;
+
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.annotation.CreatedDate;
 
-import static javax.persistence.GenerationType.SEQUENCE;
+import lombok.Builder;
+import lombok.Getter;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+@Getter
 @Entity(name = "Account")
 @Table(
 		name = "Account", 
@@ -20,8 +25,8 @@ public class Account {
 	@Column(name ="id", updatable = false)
 	private Long id;
 
-	@Column(name = "screen_name", nullable = false, columnDefinition = "TEXT")
-	private String screen_name; 
+	@Column(name = "screenName", nullable = false, columnDefinition = "LONGBLOB", unique = true, length = 18)
+	private String screenName; 
 
 	@Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true, length = 30)
 	private String email;
@@ -32,18 +37,23 @@ public class Account {
 	@Column(name = "phone")
 	private Integer phone;
 
-	@Column(name = "created_at")
+	@Column(name = "createdTime")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
-    private Date created_at;
+    private Date createdTime;
+
+	@Column(name = "role")
+	private String role;
 
 
-	public Account(String screen_name, String email, String password, Integer phone) {
-		this.screen_name = screen_name;
+	@Builder
+	public Account(String screenName, String email, String password, Integer phone) {
+		this.screenName = screenName;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.created_at = new Date();
+		this.role = "normal";
+		this.createdTime = new Date();
 	}
-}
 
+}
