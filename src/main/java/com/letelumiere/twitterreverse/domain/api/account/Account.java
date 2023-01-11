@@ -1,4 +1,4 @@
-package com.letelumiere.twitterreverse.domain.api.model.entity;
+package com.letelumiere.twitterreverse.domain.api.account;
 
 import java.util.Date;
 import javax.persistence.*;
@@ -8,9 +8,12 @@ import org.springframework.data.annotation.CreatedDate;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 @Getter
+@Setter
 @Entity(name = "Account")
 @Table(
 		name = "Account", 
@@ -18,6 +21,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 				@UniqueConstraint(name = "account_email_unique", columnNames = "email")
 		}
 )
+@NoArgsConstructor
 public class Account {
     @Id 
 	@SequenceGenerator(name = "account_sequence", sequenceName = "account_sequence", allocationSize = 1) 
@@ -25,10 +29,10 @@ public class Account {
 	@Column(name ="id", updatable = false)
 	private Long id;
 
-	@Column(name = "screenName", nullable = false, columnDefinition = "LONGBLOB", unique = true, length = 18)
+	@Column(name = "screenName", nullable = false, unique = true)
 	private String screenName; 
 
-	@Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true, length = 30)
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
 	@Column(name = "password")
@@ -44,6 +48,10 @@ public class Account {
 
 	@Column(name = "role")
 	private String role;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "originId", referencedColumnName = "id")
+	private Profile accountProfile;
 
 
 	@Builder

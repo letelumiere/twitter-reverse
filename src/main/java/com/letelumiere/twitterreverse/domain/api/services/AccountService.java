@@ -1,13 +1,15 @@
 package com.letelumiere.twitterreverse.domain.api.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.letelumiere.twitterreverse.domain.api.account.Account;
+import com.letelumiere.twitterreverse.domain.api.account.AccountRepository;
 import com.letelumiere.twitterreverse.domain.api.model.dto.AccountDTO;
-import com.letelumiere.twitterreverse.domain.api.model.entity.Account;
-import com.letelumiere.twitterreverse.domain.api.repository.AccountRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,9 +37,27 @@ public class AccountService {       //추후 implements로 더 많은 기능 축
         return accountRepository.findDataByEmail(email);
     }
 
-    public Account signUpAccount(AccountDTO accountDto){
-        Account account = accountDto.toEntity();
+    public Account signUpAccount(Account account){
         return accountRepository.save(account);
     }
+
+    public Account getReferenceId(Long id){
+        return accountRepository.getReferenceById(id);
+    }
     
-}
+    public void signOutAccount(Account account){
+        accountRepository.delete(account);
+    }
+
+    /* 계정 정보 update 서비스 로직. 추후에 보완할 예정
+    public void findAndUpdateAccount(Long id){
+        Account responsesBody = accountRepository.getReferenceById(id);
+        responsesBody.setPhone(010101);
+        accountRepository.save(responsesBody);
+    }
+     */
+    
+    public List<Account> getAccountAll(){
+        return accountRepository.findAll();
+    }
+}   

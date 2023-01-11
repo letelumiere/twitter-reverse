@@ -5,10 +5,20 @@ spring:
     username: root
     password: 1234
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
-    generate-ddl: true
+    generate-ddl: false
+    open-in-view: true
     hibernate:
       ddl-auto: create-drop
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

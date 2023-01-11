@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.letelumiere.twitterreverse.domain.api.model.entity.Account;
+import com.letelumiere.twitterreverse.domain.api.account.Account;
 import com.letelumiere.twitterreverse.domain.api.services.AccountService;
 
 @Controller
@@ -21,7 +21,6 @@ public class HomeController {
         System.out.println("hi");
         return "Home";
     }
-
 
     @GetMapping("/{screenName}")
     public ResponseEntity<Account> user(@PathVariable String screenName){
