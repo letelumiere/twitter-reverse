@@ -3,9 +3,7 @@ package com.letelumiere.twitterreverse.domain.api.account;
 import java.util.Date;
 import javax.persistence.*;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.annotation.CreatedDate;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 				@UniqueConstraint(name = "account_email_unique", columnNames = "email")
 		}
 )
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE")
 @NoArgsConstructor
 public class Account {
     @Id 
@@ -49,9 +49,12 @@ public class Account {
 	@Column(name = "role")
 	private String role;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "originId", referencedColumnName = "id")
-	private Profile accountProfile;
+	//country
+	//languages
+	//gender
+	//age
+	//verified
+	//premium account
 
 
 	@Builder

@@ -23,6 +23,11 @@ public class AccountService {       //추후 implements로 더 많은 기능 축
     @Autowired AccountRepository accountRepository;
     //private final PasswordEncoder passwordEncoder;
 
+
+    public Account getReferenceId(Long id){
+        return accountRepository.getReferenceById(id);
+    }
+
     public Account getScreenName(String screenName){
         return accountRepository.findDataByScreenName(screenName);
     }
@@ -32,32 +37,21 @@ public class AccountService {       //추후 implements로 더 많은 기능 축
         return accountRepository.findDataByPhone(phone);
     }
 
-    public Account getEmail(Integer email){
+    public Account getEmail(String email){
         log.info("fetching email {}", email);
         return accountRepository.findDataByEmail(email);
+    }
+
+    public List<Account> getAccountAll(){
+        return accountRepository.findAll();
     }
 
     public Account signUpAccount(Account account){
         return accountRepository.save(account);
     }
 
-    public Account getReferenceId(Long id){
-        return accountRepository.getReferenceById(id);
-    }
-    
     public void signOutAccount(Account account){
         accountRepository.delete(account);
     }
 
-    /* 계정 정보 update 서비스 로직. 추후에 보완할 예정
-    public void findAndUpdateAccount(Long id){
-        Account responsesBody = accountRepository.getReferenceById(id);
-        responsesBody.setPhone(010101);
-        accountRepository.save(responsesBody);
-    }
-     */
-    
-    public List<Account> getAccountAll(){
-        return accountRepository.findAll();
-    }
 }   
