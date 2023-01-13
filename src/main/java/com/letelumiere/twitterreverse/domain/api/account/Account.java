@@ -3,6 +3,7 @@ package com.letelumiere.twitterreverse.domain.api.account;
 import java.util.Date;
 import javax.persistence.*;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.data.annotation.CreatedDate;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +26,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class Account {
     @Id 
 	@SequenceGenerator(name = "account_sequence", sequenceName = "account_sequence", allocationSize = 1) 
-	@GeneratedValue(strategy = SEQUENCE, generator = "account_sequence")
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "account_sequence")
 	@Column(name ="id", updatable = false)
 	private Long id;
 

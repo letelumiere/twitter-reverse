@@ -2,6 +2,7 @@ package com.letelumiere.twitterreverse;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,16 +24,18 @@ public class TwitterReverseApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(AccountRepository accountRepository) {
 		return args -> {
-			//Account maria = new Account("maria", "maria@email.com", "1234", 00100011);
-			AccountDTO simYoung = new AccountDTO("simyong", "goja@communism.com", "122", 0001111112);
-			AccountDTO doctor = new AccountDTO("doctor", "mr@baek.com", "122", 232321);
-			//Account doohan = new Account("doohan", "kim@umi.gan", "1123", 010123);
-
-
-			accountRepository.save(simYoung.toEntity());
-			accountRepository.save(doctor.toEntity());
+			Account simYoung = new Account("sim", "goja@communism.com", "122", 0001111112);
+			Account doctor = new Account("doctor", "mr@baek.com", "122", 232321);
+			
 			
 
+			accountRepository.save(simYoung);
+			accountRepository.save(doctor);
+			
+			Profile doc = (Profile)accountRepository.findById(doctor.getId()).get();
+			System.out.println(doc.getId());
+			
+			// accountRepository.save(doctor);
 
 		};
 	}	

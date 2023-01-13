@@ -7,14 +7,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.letelumiere.twitterreverse.domain.api.account.AccountRepository;
+import com.letelumiere.twitterreverse.domain.api.account.ProfileRepository;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 class TwitterReverseApplicationTests {
-	@Autowired 
-	AccountRepository accountRepository;
+	@Autowired AccountRepository accountRepository;
+	@Autowired ProfileRepository profileRepository;
 
+	@Test
+	void test(){
+		
+	}
 
 
 	@Test
