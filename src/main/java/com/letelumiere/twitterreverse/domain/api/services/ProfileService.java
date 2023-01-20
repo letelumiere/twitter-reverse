@@ -17,9 +17,7 @@ public class ProfileService {
     ProfileRepository profileRepository;
 
 
-    public Profile getProfile(Long origin_id){
-        return profileRepository.getReferenceById(origin_id);
-    }
+
 
     /*
     public void findAndUpdateProfile(Long origin_id){

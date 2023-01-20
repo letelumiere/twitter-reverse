@@ -9,14 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity(name = "twitter_data")
 @NoArgsConstructor
 @DiscriminatorValue(value = "twitter_data")
@@ -34,6 +29,11 @@ public class Twitter_data extends Account {
 	@Column(name = "nationality")
 	private String nationality;
 
+	@Column(name = "role")
+	private String role;
+
 	@Column(name = "languages")
 	private ArrayList<String> languages;
+
+	
 }

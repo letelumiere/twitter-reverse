@@ -28,12 +28,4 @@ public class AccountDTO {
     }
 
 
-    public Account toEntity(){
-        return Account.builder()
-                .screenName(screenName)
-                .email(email)
-                .password(password)
-                .phone(phone)
-                .build();
-    }
 }

@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 @Getter
@@ -21,7 +22,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 		}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "DTYPE")
+@DiscriminatorColumn
 @NoArgsConstructor
 public class Account {
     @Id 
@@ -30,10 +31,10 @@ public class Account {
 	@Column(name ="id", updatable = false)
 	private Long id;
 
-	@Column(name = "screenName", nullable = false, unique = true)
+	@Column(name = "screenName", unique = true)
 	private String screenName; 
 
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "email", unique = true)
 	private String email;
 
 	@Column(name = "password")
@@ -47,25 +48,12 @@ public class Account {
 	@CreatedDate
     private Date createdTime;
 
-	@Column(name = "role")
-	private String role;
-
-	//country
-	//languages
-	//gender
-	//age
-	//verified
-	//premium account
-
-
-	@Builder
-	public Account(String screenName, String email, String password, Integer phone) {
+	public Account(Long id, String screenName, String email, String password, Integer phone, Date createdTime) {
+		this.id = id;
 		this.screenName = screenName;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.role = "normal";
-		this.createdTime = new Date();
+		this.createdTime = createdTime;
 	}
-
 }
