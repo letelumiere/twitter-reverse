@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.letelumiere.twitterreverse.domain.api.accounts.Account;
-import com.letelumiere.twitterreverse.domain.api.accounts.AccountRepository;
+import com.letelumiere.twitterreverse.domain.api.dao.AccountRepository;
+import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

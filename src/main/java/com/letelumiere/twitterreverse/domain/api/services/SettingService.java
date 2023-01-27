@@ -5,9 +5,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.letelumiere.twitterreverse.domain.api.accounts.Account;
-import com.letelumiere.twitterreverse.domain.api.accounts.AccountRepository;
-import com.letelumiere.twitterreverse.domain.api.accounts.ProfileRepository;
+import com.letelumiere.twitterreverse.domain.api.dao.AccountRepository;
+import com.letelumiere.twitterreverse.domain.api.dao.ProfileRepository;
+import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +29,8 @@ public class SettingService {
         accountRepository.save(responsesBody);
     }
      */
-
-     public Account findAndUpdateScreenName(String screenName, Account account){
+/*
+    public Account findAndUpdateScreenName(String screenName, Account account){
         Account responseBody = accountRepository.findDataByScreenName(screenName);
         responseBody.setScreenName(screenName);
         
@@ -44,7 +44,7 @@ public class SettingService {
     }
 
     public Account findAndUpdateEmail(String email, Account account){
-        Account responseBody = accountRepository.getReferenceById(account.getId());
+        Account responseBody = accountRepository.getReferenceById(account);
         responseBody.setEmail(email);
         return accountRepository.save(responseBody);
     }
@@ -64,5 +64,5 @@ public class SettingService {
     }
 
     */
-    
+      
 }
