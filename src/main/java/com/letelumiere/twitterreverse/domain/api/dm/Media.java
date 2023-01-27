@@ -1,8 +1,8 @@
-package com.letelumiere.twitterreverse.domain.api.model.entity;
+package com.letelumiere.twitterreverse.domain.api.dm;
 
 import javax.persistence.Entity;
 
-public class CopyOfMedias {
+public class Media {
 	long content_id;
 	String filename;
     String format;

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.letelumiere.twitterreverse.domain.api.account.Account;
+import com.letelumiere.twitterreverse.domain.api.accounts.Account;
 import com.letelumiere.twitterreverse.domain.api.services.AccountService;
 import com.letelumiere.twitterreverse.domain.api.services.SettingService;
 

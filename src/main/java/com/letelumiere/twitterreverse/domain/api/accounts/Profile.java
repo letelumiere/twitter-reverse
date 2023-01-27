@@ -1,44 +1,46 @@
-package com.letelumiere.twitterreverse.domain.api.account;
+package com.letelumiere.twitterreverse.domain.api.accounts;
 
 import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Entity(name = "profile")
-@DiscriminatorValue(value = "DTYPE")
+@DiscriminatorValue(value = "profile")
 @PrimaryKeyJoinColumn(name = "origin_id")
 @NoArgsConstructor
 public class Profile extends Account {
 
 	@Column(name = "header")
-	String header;
+	private String header;
 
 	@Column(name = "nickname")
-	String nickname;
+	private String nickname;
 	
 	@Column(name = "photo")
-	String photo;
+	private String photo;
 
 	@Column(name = "location")
-	String location;
+	private String location;
 	
 	@Column(name = "website")
-	String website;
+	private String website;
 	
 	@Column(name = "birth")
-	String birth;
+	private String birth;
 
 	@Column(name = "introduce")
-	String introduce;
+	private String introduce;
 	
 	@Column(name = "modifiedTime")
 	@Temporal(TemporalType.TIMESTAMP)
 	@UpdateTimestamp
-	Date modifiedTime;
+	private Date modifiedTime;
 		
+
+	@Builder
 	public Profile(Long id, String screenName, String email, String password, Integer phone, Date createdTime,
 			String header, String nickname, String photo, String location, String website, String birth,
 			String introduce, Date modifiedTime) {

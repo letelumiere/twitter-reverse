@@ -1,4 +1,4 @@
-package com.letelumiere.twitterreverse.domain.api.account;
+package com.letelumiere.twitterreverse.domain.api.accounts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @DiscriminatorValue(value = "twitter_data")
 @PrimaryKeyJoinColumn(name = "origin_id")
-public class Twitter_data extends Account {
+public class TwitterData extends Account {
 
 	@Column(name = "verifications")
 	@ColumnDefault(value = "FALSE")
@@ -24,7 +24,7 @@ public class Twitter_data extends Account {
 
 	@Column(name = "premium_verifications")
 	@ColumnDefault(value = "FALSE")
-	private Boolean premium_verifications;
+	private Boolean premiumVerifications;
 
 	@Column(name = "nationality")
 	private String nationality;

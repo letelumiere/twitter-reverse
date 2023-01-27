@@ -1,22 +1,18 @@
-package com.letelumiere.twitterreverse.domain.api.account;
+package com.letelumiere.twitterreverse.domain.api.accounts;
 
 import java.util.Date;
 import javax.persistence.*;
 
-import org.hibernate.annotations.Cascade;
 import org.springframework.data.annotation.CreatedDate;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
-import static javax.persistence.GenerationType.SEQUENCE;
 @Getter
 @Setter
-@Entity(name = "Account")
+@Entity(name = "account")
 @Table(
-		name = "Account", 
+		name = "account", 
 		uniqueConstraints = {
 				@UniqueConstraint(name = "account_email_unique", columnNames = "email")
 		}

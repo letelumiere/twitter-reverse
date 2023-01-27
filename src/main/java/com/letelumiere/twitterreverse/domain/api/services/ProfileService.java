@@ -3,8 +3,8 @@ package com.letelumiere.twitterreverse.domain.api.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.letelumiere.twitterreverse.domain.api.account.Profile;
-import com.letelumiere.twitterreverse.domain.api.account.ProfileRepository;
+import com.letelumiere.twitterreverse.domain.api.accounts.Profile;
+import com.letelumiere.twitterreverse.domain.api.accounts.ProfileRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

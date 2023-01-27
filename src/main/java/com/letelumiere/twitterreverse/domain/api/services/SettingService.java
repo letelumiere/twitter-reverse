@@ -5,9 +5,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.letelumiere.twitterreverse.domain.api.account.Account;
-import com.letelumiere.twitterreverse.domain.api.account.AccountRepository;
-import com.letelumiere.twitterreverse.domain.api.account.ProfileRepository;
+import com.letelumiere.twitterreverse.domain.api.accounts.Account;
+import com.letelumiere.twitterreverse.domain.api.accounts.AccountRepository;
+import com.letelumiere.twitterreverse.domain.api.accounts.ProfileRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
