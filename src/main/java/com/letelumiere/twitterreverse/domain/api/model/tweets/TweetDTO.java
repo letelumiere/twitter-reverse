@@ -11,8 +11,6 @@ public class TweetDTO {
     private Boolean circle;
     private String content;
     
-
-
     public Tweet toEntity(){
         return Tweet.builder()
                 .twitId(twitId)

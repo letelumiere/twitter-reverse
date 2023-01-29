@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ApiController {
     @Autowired private final AccountService accountService;
     @Autowired private final SettingService settingService;
-/*
+
     //이상 없음
     @GetMapping("/account")
     public ResponseEntity<List<Account>> getAccount(){
@@ -65,7 +65,9 @@ public class ApiController {
 
     //계정 정보 update 서비스 로직. 추후에 보완할 예정
     //view에서의 uri는 %domain%/settings/your_twitter_data/account 임
-    //해당 view에서 각각의 컨트롤러 객체를 가져오는 듯  
+    //해당 view에서 각각의 컨트롤러 객체를 가져오는 듯
+    
+    /*
     @PutMapping("/settings/screen_name/{screen_name}")
     public ResponseEntity<Account> findAndUpdateScreenName(@PathVariable String ScreenName, @RequestBody Account account){
         settingService.findAndUpdateScreenName(ScreenName, account);
@@ -86,6 +88,5 @@ public class ApiController {
         accountService.signOutAccount(account);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
- */
-    
+     */
 }

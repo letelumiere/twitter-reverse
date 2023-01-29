@@ -4,15 +4,16 @@ import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 @Entity(name = "profile")
 @DiscriminatorValue(value = "profile")
 @PrimaryKeyJoinColumn(name = "origin_id")
-@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Profile extends Origin {
-/*
+
 	@Column(name = "header")
 	private String header;
 
@@ -38,26 +39,4 @@ public class Profile extends Origin {
 	@Temporal(TemporalType.TIMESTAMP)
 	@UpdateTimestamp
 	private Date modifiedTime;
-		
-
-	@Builder
-	public Profile(Long id, String screenName, String email, String password, Integer phone, Date createdTime,
-			String header, String nickname, String photo, String location, String website, String birth,
-			String introduce, Date modifiedTime) {
-		super(id, screenName, email, password, phone, createdTime);
-		this.header = header;
-		this.nickname = nickname;
-		this.photo = photo;
-		this.location = location;
-		this.website = website;
-		this.birth = birth;
-		this.introduce = introduce;
-		this.modifiedTime = modifiedTime;
-	}
-	
-	public static Profile superFrom(){
-		return new Profile(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	}
-
-	*/
 }
