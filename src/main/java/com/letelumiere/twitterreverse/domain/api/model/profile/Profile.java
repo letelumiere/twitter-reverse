@@ -1,18 +1,28 @@
-package com.letelumiere.twitterreverse.domain.api.model.accounts;
+package com.letelumiere.twitterreverse.domain.api.model.profile;
 
 import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
+import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
+
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "profile")
-@DiscriminatorValue(value = "profile")
-@PrimaryKeyJoinColumn(name = "origin_id")
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Builder
-public class Profile extends Origin {
+public class Profile {
+	
+	@Id
+	@Column(name = "origin_id")
+	private Long id;
 
 	@Column(name = "header")
 	private String header;

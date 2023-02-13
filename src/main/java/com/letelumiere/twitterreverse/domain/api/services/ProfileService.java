@@ -1,36 +1,24 @@
 package com.letelumiere.twitterreverse.domain.api.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.letelumiere.twitterreverse.domain.api.dao.ProfileRepository;
-import com.letelumiere.twitterreverse.domain.api.model.accounts.Profile;
+import com.letelumiere.twitterreverse.domain.api.model.profile.Profile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
-@Slf4j
 public class ProfileService {
-    ProfileRepository profileRepository;
+    @Autowired ProfileRepository profileRepository;
 
 
-
-
-    /*
-    public void findAndUpdateProfile(Long origin_id){
-        Profile responseBody = profileRepository.getReferenceById(origin_id);
-        responseBody.setNickname(null);
-        responseBody.setEmail(null);
-        responseBody.setIntroduce(null);
-        responseBody.setHeader(null);
-        responseBody.setBirth(null);
-        responseBody.setPhoto(null);
-        responseBody.setWebsite(null);
-
-        profileRepository.save(responseBody);
+    public Profile createProfile(Profile profile){
+        return profileRepository.save(profile);
     }
-     */
-}   
+
+
+}

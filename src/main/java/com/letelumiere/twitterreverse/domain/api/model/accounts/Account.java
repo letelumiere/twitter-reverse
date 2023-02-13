@@ -8,7 +8,13 @@ import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "account")
 @Table(
@@ -19,8 +25,14 @@ import lombok.Builder;
 )
 @DiscriminatorValue(value = "account")
 @PrimaryKeyJoinColumn(name = "origin_id")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @Builder
 public class Account extends Origin {
+
+	@OneToOne(mappedBy ="origin_id")
+	private Long id;
 
 	@Column(name = "screenName", unique = true)
 	private String screenName; 

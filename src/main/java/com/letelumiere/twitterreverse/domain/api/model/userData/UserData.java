@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import com.letelumiere.twitterreverse.domain.api.model.accounts.Origin;
+import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
 
 @Entity
 public class UserData extends Origin{

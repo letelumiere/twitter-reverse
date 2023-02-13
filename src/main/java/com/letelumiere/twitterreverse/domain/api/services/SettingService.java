@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.letelumiere.twitterreverse.domain.api.dao.AccountRepository;
 import com.letelumiere.twitterreverse.domain.api.dao.ProfileRepository;
+import com.letelumiere.twitterreverse.domain.api.dao.SettingRepository;
 import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
+import com.letelumiere.twitterreverse.domain.api.model.twitterData.TwitterData;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 public class SettingService {
     @Autowired AccountRepository accountRepository;
     @Autowired ProfileRepository profileRepository;
+    @Autowired SettingRepository settingRepository;
 
+    public TwitterData createSettingData(Long id, TwitterData data){
+        return settingRepository.save(data);
+    }
 
     
     /* 계정 정보 update 서비스 로직. 추후에 보완할 예정

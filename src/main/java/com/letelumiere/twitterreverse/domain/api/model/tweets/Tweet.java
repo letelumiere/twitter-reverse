@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedDate;
 
-import com.letelumiere.twitterreverse.domain.api.model.accounts.Origin;
+import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
 
 import lombok.Builder;
 

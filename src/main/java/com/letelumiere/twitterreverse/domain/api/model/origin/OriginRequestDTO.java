@@ -1,10 +1,9 @@
-package com.letelumiere.twitterreverse.domain.api.model.accounts;
+package com.letelumiere.twitterreverse.domain.api.model.origin;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Data
 @Getter

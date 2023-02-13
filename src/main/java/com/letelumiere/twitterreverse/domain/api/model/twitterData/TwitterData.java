@@ -1,4 +1,4 @@
-package com.letelumiere.twitterreverse.domain.api.model.accounts;
+package com.letelumiere.twitterreverse.domain.api.model.twitterData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,17 +6,28 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "twitter_data")
+@AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue(value = "twitter_data")
-@PrimaryKeyJoinColumn(name = "origin_id")
-public class TwitterData extends Origin {
+@Getter
+@Builder
+public class TwitterData {
+
+	@Id
+	@Column(name = "origin_id")
+	private Long id;
 
 	@Column(name = "verifications")
 	@ColumnDefault(value = "FALSE")

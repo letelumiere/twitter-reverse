@@ -1,4 +1,4 @@
-package com.letelumiere.twitterreverse.domain.api.model.accounts;
+package com.letelumiere.twitterreverse.domain.api.model.profile;
 
 import java.util.Date;
 
