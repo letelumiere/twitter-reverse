@@ -1,9 +1,6 @@
 package com.letelumiere.twitterreverse.domain.api.model.accounts;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import java.util.*;
 import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -11,12 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
 import com.letelumiere.twitterreverse.domain.api.model.tweets.Tweet;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity(name = "account")
 @Table(

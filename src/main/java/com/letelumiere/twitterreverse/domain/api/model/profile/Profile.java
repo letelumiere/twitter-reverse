@@ -1,16 +1,9 @@
 package com.letelumiere.twitterreverse.domain.api.model.profile;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
-import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
-import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
-
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
