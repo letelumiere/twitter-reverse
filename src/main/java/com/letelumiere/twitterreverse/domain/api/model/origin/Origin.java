@@ -11,15 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.letelumiere.twitterreverse.domain.api.model.tweets.Tweet;
-
 import lombok.*;
-
 
 @Entity(name = "origin")
 @Table(
@@ -38,7 +34,4 @@ public class Origin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "origin_id_sequence")
 	@Column(name ="id", updatable = false)
 	private Long id;
-
-	@OneToMany(mappedBy = "origin")
-	private List<Tweet> tweets = new ArrayList<>();
 }

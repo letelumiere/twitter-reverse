@@ -2,32 +2,47 @@ package com.letelumiere.twitterreverse.domain.api.model.userData;
 
 import java.util.ArrayList;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+public class UserData {
 
-import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
+    public class Block {
+        long originId;
+        long blockId; 
+        String blockedTime;
+    }
 
-@Entity
-public class UserData extends Origin{
-    
-    @Column
-    private ArrayList<Block> block;
-    
-    @Column
-    private ArrayList<Bookmark> bookMark;
-    
-    @Column
-    private ArrayList<Circle> circle;
-    
-    @Column
-    private ArrayList<List> list;
+    public class Bookmark {
+        long id;
+        long twitId;
+        String markedTime;
+    }
 
-    @Column
-    private ArrayList<Favorite> favorite;
-    
-    @Column
-    private ArrayList<Report> report;
-    
-    @Column
-    private ArrayList<Mute> mute;
+    public class Mute {    
+        long originId;
+        long muteId;
+    }
+    public class List {
+        long id;
+        long originId;
+        ArrayList<Long> member;
+        String title;
+        boolean open;
+    }
+
+    public class Circle {
+        long originId;
+        ArrayList<Long> memberId;
+    }
+
+    public class MemberList {
+        long id;
+        long originId;
+        ArrayList<Long> member;
+        String title;
+        boolean open;
+    }
+
+    public class Report {
+        long id;
+        String category;
+    }
 }

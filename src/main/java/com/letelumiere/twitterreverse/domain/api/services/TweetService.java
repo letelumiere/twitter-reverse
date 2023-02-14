@@ -15,13 +15,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Transactional
-@Slf4j
 public class TweetService {
     @Autowired TweetRepository tweetRepository;
 
-    public Tweet confirmTweet(TweetDTO twitDto){
-        Tweet tweet = twitDto.toEntity();
+    public Tweet confirmTweet(Tweet tweet){
         return tweetRepository.save(tweet);
     }
     
+    public void deleteTweet(Tweet tweet){
+        tweetRepository.delete(tweet);
+    }
 }

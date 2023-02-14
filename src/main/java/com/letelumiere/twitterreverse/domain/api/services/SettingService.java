@@ -27,7 +27,14 @@ public class SettingService {
         return settingRepository.save(data);
     }
 
-    
+    public Account findAndUpdateScreenName(String screenName, Account account){
+        Account responseBody = accountRepository.findDataByScreenName(screenName);
+        responseBody.setScreenName(account.getScreenName());
+        
+        return accountRepository.save(responseBody);
+    }
+
+
     /* 계정 정보 update 서비스 로직. 추후에 보완할 예정
     public void findAndUpdateAccount(Long id){
         Account responseBody = accountRepository.getReferenceById(id);
@@ -36,13 +43,7 @@ public class SettingService {
     }
      */
 /*
-    public Account findAndUpdateScreenName(String screenName, Account account){
-        Account responseBody = accountRepository.findDataByScreenName(screenName);
-        responseBody.setScreenName(screenName);
-        
-        return accountRepository.save(responseBody);
-    }
-
+    
     public Account findAndUpdatePassword(String password, Account account){
         Account responseBody = accountRepository.getReferenceById(account.getId());
         responseBody.setPassword(password);

@@ -1,8 +1,11 @@
 package com.letelumiere.twitterreverse.domain.api.model.profile;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
 import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
@@ -49,4 +52,32 @@ public class Profile {
 	@Temporal(TemporalType.TIMESTAMP)
 	@UpdateTimestamp
 	private Date modifiedTime;
+
+	@OneToOne
+	@JoinTable(name = "follows", 
+				joinColumns = @JoinColumn(name = "origin_id"),
+				inverseJoinColumns = @JoinColumn(name ="origin_id")
+	)
+	private Follows follows;
+
+	@Entity(name = "follows")
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@Getter
+	public class Follows{
+
+		@Id
+		@Column(name = "origin_id")
+		private Long originId;
+
+		@Column(name = "following")
+		Long following;
+
+		@Column(name = "followed")
+		Long followed;
+
+		@Column(name = "friend", updatable = true)
+		boolean friend;
+	}
+	
 }

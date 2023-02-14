@@ -4,10 +4,12 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,8 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
+import com.letelumiere.twitterreverse.domain.api.model.tweets.Tweet;
+import com.letelumiere.twitterreverse.domain.api.model.tweets.TweetDTO;
 import com.letelumiere.twitterreverse.domain.api.services.AccountService;
 import com.letelumiere.twitterreverse.domain.api.services.SettingService;
+import com.letelumiere.twitterreverse.domain.api.services.TweetService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ApiController {
     @Autowired private final AccountService accountService;
     @Autowired private final SettingService settingService;
+    @Autowired private final TweetService tweetService;
 
     //이상 없음
     @GetMapping("/account")
@@ -62,13 +68,13 @@ public class ApiController {
     //view에서의 uri는 %domain%/settings/your_twitter_data/account 임
     //해당 view에서 각각의 컨트롤러 객체를 가져오는 듯
     
-    /*
+    
     @PutMapping("/settings/screen_name/{screen_name}")
     public ResponseEntity<Account> findAndUpdateScreenName(@PathVariable String ScreenName, @RequestBody Account account){
         settingService.findAndUpdateScreenName(ScreenName, account);
         return ResponseEntity.ok().build();
     }
-    
+    /*
     //front-end에서 fetch로 reponse하는 듯? 
     @PutMapping("/settings/password/")
     public ResponseEntity<Account> findAndUpdatePassword(@PathVariable String password, @RequestBody Account account){
@@ -84,4 +90,10 @@ public class ApiController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
      */
+
+     @PostMapping("/tweet")
+     public ResponseEntity<Tweet> confirmTweet(@RequestBody Tweet tweet){
+         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/tweet").toUriString());
+         return ResponseEntity.created(uri).body(tweetService.confirmTweet(tweet));
+     }
 }

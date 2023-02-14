@@ -8,13 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.letelumiere.twitterreverse.domain.api.controller.ApiController;
-import com.letelumiere.twitterreverse.domain.api.dao.AccountRepository;
 import com.letelumiere.twitterreverse.domain.api.dao.ProfileRepository;
 import com.letelumiere.twitterreverse.domain.api.model.accounts.Account;
-import com.letelumiere.twitterreverse.domain.api.model.origin.OriginRequestDTO;
 import com.letelumiere.twitterreverse.domain.api.model.profile.Profile;
-import com.letelumiere.twitterreverse.domain.api.model.tweets.TweetDTO;
+import com.letelumiere.twitterreverse.domain.api.model.tweets.Tweet;
 import com.letelumiere.twitterreverse.domain.api.model.twitterData.TwitterData;
 import com.letelumiere.twitterreverse.domain.api.services.AccountService;
 import com.letelumiere.twitterreverse.domain.api.services.OriginService;
@@ -29,6 +26,8 @@ public class TwitterReverseApplication {
 	@Autowired ProfileService profileService;
 	@Autowired OriginService originService;
 	@Autowired SettingService settingService;
+	@Autowired TweetService tweetService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(TwitterReverseApplication.class, args);
@@ -48,18 +47,31 @@ public class TwitterReverseApplication {
 			
 			long id = doctor.getId();
 
-			Profile doctor_p = Profile.builder()
+			Profile doctorP = Profile.builder()
 				.id(id)
 				.nickname("의사양반")
 				.photo("없어요")
 				.introduce("여기는 백병원입니다")
 				.build();
-			profileService.createProfile(doctor_p);
+			profileService.createProfile(doctorP);
 			
 			TwitterData data = TwitterData.builder()
 				.id(id)
 				.build();
 			settingService.createSettingData(id, data);
+			
+
+			Tweet tweet = Tweet.builder()
+				.content("전화 없으니까 그냥 푹 쉬세요")
+				.circle(false)
+				.build();
+
+			tweetService.confirmTweet(tweet);
+			
+			doctor.setScreenName("@phD");
+			settingService.findAndUpdateScreenName("@doctor", doctor);
+			
 		};	
+
 	}
 }

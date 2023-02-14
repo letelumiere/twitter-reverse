@@ -9,12 +9,14 @@ import javax.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.letelumiere.twitterreverse.domain.api.model.origin.Origin;
+import com.letelumiere.twitterreverse.domain.api.model.tweets.Tweet;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity(name = "account")
 @Table(
@@ -28,6 +30,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Builder
 public class Account extends Origin {
 
@@ -50,5 +53,8 @@ public class Account extends Origin {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
     private Date createdTime;
+	
+	@ElementCollection
+	private List<Tweet> tweet;
 	
 }
